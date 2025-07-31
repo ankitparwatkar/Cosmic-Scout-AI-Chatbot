@@ -1,0 +1,87 @@
+# Groq Product Information
+
+## Language Models
+### llama-4-scout-17b-16e-instruct
+- Type: Instruction-tuned LLM
+- Context: 16,384 tokens
+- Strengths: Reasoning, coding, long conversations
+- Best for: Chat applications, complex Q&A
+
+### mixtral-8x7b-32768
+- Type: Sparse Mixture-of-Experts
+- Context: 32,768 tokens
+- Strengths: Technical content, multilingual
+- Best for: Research, analysis, large documents
+
+### gemma-7b-it
+- Type: Lightweight LLM
+- Context: 8,192 tokens
+- Strengths: Fast response, efficient
+- Best for: Mobile apps, edge devices
+
+## Audio Models
+### playai-tts (Text-to-Speech)
+- Voices: 
+  - Aaliyah-PlayAI: Female, calm, natural
+  - James-PlayAI: Male, professional, clear
+  - Maya-PlayAI: Female, energetic, expressive
+- Formats: WAV, MP3, OPUS
+- Features: SSML support, emotion control
+
+### whisper-large-v3 (Speech-to-Text)
+- Languages: 99+ languages
+- Accuracy: State-of-the-art transcription
+- Features: 
+  - Speaker diarization
+  - Word-level timestamps
+  - Profanity filtering
+
+## Pricing
+### Language Models
+- llama-4-scout: $0.50 / 1M tokens
+- mixtral-8x7b: $0.80 / 1M tokens
+- gemma-7b: $0.20 / 1M tokens
+
+### Audio Models
+- TTS: $0.80 / 1M characters
+- STT: $1.50 / hour of audio
+
+## Feature Comparison
+| Feature               | llama-4-scout | mixtral-8x7b | gemma-7b |
+|-----------------------|---------------|--------------|----------|
+| Max context           | 16K           | 32K          | 8K       |
+| Coding ability        | Excellent     | Good         | Fair     |
+| Multilingual          | 20+ languages | 50+ languages| 10+      |
+| Speed (tokens/sec)    | 85            | 120          | 150      |
+| Instruction following | 9/10          | 8/10         | 7/10     |
+
+## Enterprise Features
+- Dedicated instances
+- Custom model fine-tuning
+- SOC 2 compliance
+- Private networking
+- SLAs with 99.9% uptime
+- On-prem deployment options
+
+## Upcoming Features
+1. Image understanding (vision models)
+2. Multi-modal chat (text+image)
+3. Longer context (128K tokens)
+4. Real-time translation API
+5. Custom voice cloning
+
+## Best Use Cases
+### llama-4-scout
+- Customer support bots
+- Technical documentation
+- Code generation
+
+### mixtral-8x7b
+- Legal document analysis
+- Research paper summarization
+- Multilingual applications
+
+### gemma-7b
+- Mobile applications
+- IoT device integration
+- High-volume simple queries

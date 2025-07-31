@@ -1,0 +1,96 @@
+# Groq API Code Samples
+
+## Python - Basic Chat Completion
+import os
+from groq import Groq
+
+client = Groq(api_key=os.environ["GROQ_API_KEY"])
+response = client.chat.completions.create(
+    model="llama-4-scout-17b-16e-instruct",
+    messages=[{"role": "user", "content": "Explain quantum computing"}],
+    temperature=0.5,
+    max_tokens=512
+)
+print(response.choices[0].message.content)
+
+## Python - Streaming Responses
+completion = client.chat.completions.create(
+    model="mixtral-8x7b-32768",
+    messages=[{"role": "user", "content": "Write a poem about AI"}],
+    stream=True
+)
+
+for chunk in completion:
+    print(chunk.choices[0].delta.content or "", end="", flush=True)
+
+## Python - Text-to-Speech
+response = client.audio.speech.create(
+    model="playai-tts",
+    voice="James-PlayAI",
+    input="Hello world! This is synthesized speech.",
+    response_format="mp3"
+)
+response.stream_to_file("output.mp3")
+
+## Python - Speech Recognition
+with open("audio.m4a", "rb") as audio_file:
+    transcript = client.audio.transcriptions.create(
+        file=(audio_file.name, audio_file),
+        model="whisper-large-v3"
+    )
+print(transcript.text)
+
+## JavaScript - Basic Completion
+import Groq from "groq-sdk";
+
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const completion = await groq.chat.completions.create({
+    model: "gemma-7b-it",
+    messages: [{ role: "user", content: "Explain RAG systems" }],
+    temperature: 0.7,
+    max_tokens: 1024
+});
+console.log(completion.choices[0].message.content);
+
+## Python - Error Handling
+from groq import Groq, APIError
+
+try:
+    response = client.chat.completions.create(/* params */)
+except APIError as e:
+    print(f"API Error: {e.status_code} - {e.message}")
+    if e.status_code == 429:
+        print("Wait 60 seconds before retrying")
+except Exception as e:
+    print(f"General error: {str(e)}")
+
+## Python - Function Calling
+response = client.chat.completions.create(
+    model="llama-4-scout-17b-16e-instruct",
+    messages=[{"role": "user", "content": "What's weather in Paris?"}],
+    tools=[{
+        "type": "function",
+        "function": {
+            "name": "get_weather",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "location": {"type": "string"},
+                    "unit": {"enum": ["celsius", "fahrenheit"]}
+                }
+            }
+        }
+    }]
+)
+
+## Python - Image Processing (Vision)
+response = client.chat.completions.create(
+    model="llava-next-72b",
+    messages=[{
+        "role": "user",
+        "content": [
+            {"type": "text", "text": "Describe this image"},
+            {"type": "image_url", "image_url": {"url": "https://..."}}
+        ]
+    }]
+)

@@ -1,0 +1,79 @@
+# Groq API Troubleshooting Guide
+
+## Authentication Errors (401)
+Symptoms:
+- 401 Unauthorized errors
+- "Invalid API key" messages
+
+Solutions:
+1. Verify your API key at https://console.groq.com/keys
+2. Ensure correct header format:
+   Authorization: Bearer YOUR_API_KEY
+3. Check for trailing whitespace in key
+4. Regenerate key if compromised
+
+## Rate Limit Errors (429)
+Symptoms:
+- 429 Too Many Requests
+- "Rate limit exceeded" messages
+
+Solutions:
+1. Implement exponential backoff in your code
+2. Reduce request frequency
+3. Upgrade account tier
+4. Contact support for quota increase
+
+## Model Unavailable Errors (503)
+Symptoms:
+- "Model temporarily unavailable"
+- Long response times
+
+Solutions:
+1. Retry after 30 seconds
+2. Check status.groq.com for outages
+3. Use alternative models
+4. Reduce request complexity
+
+## Audio Processing Issues
+### Speech Recognition Failures
+- Ensure audio is <25MB
+- Use supported formats: WAV, MP3, M4A
+- Check sample rate (16kHz recommended)
+- Reduce background noise
+
+### TTS Quality Issues
+- Break long text into <500 character chunks
+- Add SSML for pronunciation control
+- Try different voices
+- Adjust speaking rate with <prosody rate="slow">
+
+## Unexpected Model Responses
+Solutions:
+1. Lower temperature (0.2-0.5 for deterministic)
+2. Set max_tokens to limit response length
+3. Use system messages for instructions
+4. Add stop sequences to prevent run-ons
+
+## Python SDK Issues
+### Installation Problems
+Fix with:
+pip install --upgrade groq
+
+### Connection Errors
+1. Check firewall settings
+2. Verify SSL certificates
+3. Try different network
+4. Update requests library
+
+## Common HTTP Status Codes
+- 400: Bad request (check parameters)
+- 403: Forbidden (insufficient permissions)
+- 404: Endpoint not found
+- 500: Internal server error (contact support)
+- 502: Bad gateway (retry later)
+
+## Best Practices
+- Always implement error handling
+- Use exponential backoff for retries
+- Validate inputs before sending
+- Monitor usage at console.groq.com

@@ -1,0 +1,3 @@
+I am an AI assistant created to help answer questions.
+I can process natural language queries and provide helpful responses.
+My knowledge comes from documents in my knowledge base.
